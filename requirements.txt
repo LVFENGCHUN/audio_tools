@@ -1,0 +1,9 @@
+num2words
+demucs
+encodec
+hydra_colorlog
+flashy>=0.0.1
+torchmetrics
+spacy>=3.6.1
+torchtext
+funasr>=1.1.2
