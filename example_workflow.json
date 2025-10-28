@@ -1,0 +1,298 @@
+{
+  "id": "0f1438d4-b214-4830-85a0-d84d4d464c22",
+  "revision": 0,
+  "last_node_id": 7,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "AudioGenGenerateNode",
+      "pos": [
+        1657.0570068359375,
+        -1842.400390625
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AudioGenGenerateNode",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "prompt": true,
+            "duration": true
+          },
+          "version": "7.0.1"
+        }
+      },
+      "widgets_values": [
+        "a dog's excited bark of joy",
+        5,
+        "/root/lvfengchun/models/audiogen-medium"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "SaveAudioMP3",
+      "pos": [
+        2114.821044921875,
+        -1827.56884765625
+      ],
+      "size": [
+        270,
+        136
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 1
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "SaveAudioMP3",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "filename_prefix": true,
+            "quality": true,
+            "audioUI": true
+          },
+          "version": "7.0.1"
+        }
+      },
+      "widgets_values": [
+        "audio/ComfyUI",
+        "V0"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "SenseVoiceTranscribeNode",
+      "pos": [
+        2076.51171875,
+        -1512.2855224609375
+      ],
+      "size": [
+        270,
+        178
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SenseVoiceTranscribeNode",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "device": true,
+            "language": true,
+            "use_itn": true,
+            "batch_size_s": true,
+            "merge_vad": true,
+            "merge_length_s": true
+          },
+          "version": "7.0.1"
+        }
+      },
+      "widgets_values": [
+        "cuda:0",
+        "auto",
+        true,
+        60,
+        true,
+        15
+      ]
+    },
+    {
+      "id": 6,
+      "type": "LoadAudio",
+      "pos": [
+        1659.09765625,
+        -1506.80224609375
+      ],
+      "size": [
+        274.080078125,
+        136
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "LoadAudio",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "audio": true,
+            "audioUI": true,
+            "upload": true
+          },
+          "version": "7.0.1"
+        }
+      },
+      "widgets_values": [
+        "spk_1761634802.wav",
+        null,
+        null
+      ]
+    },
+    {
+      "id": 7,
+      "type": "ShowText|pysssss",
+      "pos": [
+        2494.2841796875,
+        -1538.44287109375
+      ],
+      "size": [
+        140,
+        76
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.5",
+        "Node name for S&R": "ShowText|pysssss",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.0.1"
+        }
+      },
+      "widgets_values": [
+        "旺财，今天我们出去玩吧。😡"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "AUDIO"
+    ],
+    [
+      2,
+      6,
+      0,
+      5,
+      0,
+      "AUDIO"
+    ],
+    [
+      3,
+      5,
+      0,
+      7,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "音频生成",
+      "bounding": [
+        1647.0570068359375,
+        -1916.0003662109375,
+        747.7640380859375,
+        283.6000061035156
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "ASR",
+      "bounding": [
+        1649.09765625,
+        -1612.0428466796875,
+        995.1861572265625,
+        287.7573547363281
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "ds": {
+      "scale": 1.0610764609500123,
+      "offset": [
+        -882.2592591693898,
+        2027.1457522763938
+      ]
+    },
+    "frontendVersion": "1.26.13",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
