@@ -12,7 +12,7 @@ from funasr.utils.postprocess_utils import rich_transcription_postprocess
 def generate_audiogen_audio(
     descriptions: List[str],
     duration: int = 5,
-    model_path: str = "/root/lvfengchun/models/audiogen-medium",
+    model_path: str = "facebook/audiogen-medium",
 ) -> bytes:
     """
     使用 AudioGen 模型生成音频
@@ -60,10 +60,7 @@ class AudioGenGenerateNode:
             "required": {
                 "prompt": ("STRING", {"default": "A calm lo-fi beat with gentle piano and vinyl crackle.", "multiline": True}),
                 "duration": ("INT", {"default": 5, "min": 1, "max": 60}),
-            },
-            "optional": {
-                "model_path": ("STRING", {"default": "/root/lvfengchun/models/audiogen-medium"}),
-            },
+            }
         }
 
     RETURN_TYPES = ("AUDIO",)
@@ -94,7 +91,7 @@ class AudioGenGenerateNode:
             "sample_rate": sample_rate,
         }
 
-    def generate(self, prompt: str, duration: int, model_path: str = "/root/lvfengchun/models/audiogen-medium"):
+    def generate(self, prompt: str, duration: int, model_path: str = "facebook/audiogen-medium"):
         descriptions = self._prepare_descriptions(prompt)
         duration = max(int(duration), 1)
 
